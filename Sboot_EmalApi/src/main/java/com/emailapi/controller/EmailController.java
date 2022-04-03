@@ -22,8 +22,10 @@ public class EmailController {
 		return "hello this is my email api";
 	}
 
+//===========[ JSon ke format me bheja hua data iss @RequestBody ke karan emailRequest me aajayega ]===========	
+	
 	@PostMapping("/sendemail")
-	public ResponseEntity<?> sendEmail(@RequestBody EmailRequest emailRequest) 		// JSon ke format me bheja hua data iss @RequestBody ke karan emailRequest me aajayega.   
+	public ResponseEntity<?> sendEmail(@RequestBody EmailRequest emailRequest) 		
 	{
 		System.out.println("EmailRequest : "+emailRequest);
 		
@@ -44,8 +46,10 @@ public class EmailController {
 	
 	}
 	
+//==========[ User can take "receiverMail" , "subject" , "textMessage" as in this method parameter ]=============
+
 /*	@PostMapping("/sendemail")
-	public ResponseEntity<?> sendEmail() 		// User can take "receiverMail" , "subject" , "textMessage" as in this method parameter. 
+	public ResponseEntity<?> sendEmail() 		
 	{
 		try {
 			String receiverMail = "rj532903@gmail.com";
