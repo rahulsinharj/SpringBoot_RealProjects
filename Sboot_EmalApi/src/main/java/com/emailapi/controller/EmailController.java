@@ -22,7 +22,21 @@ public class EmailController {
 		return "hello this is my email api";
 	}
 
-//===========[ JSon ke format me bheja hua data iss @RequestBody ke karan emailRequest me aajayega ]===========	
+/*===========[ JSon ke format me bheja hua data iss @RequestBody ke karan emailRequest me aajayega ]===========	
+
+	Anyone can consume this API for sending email :
+   -------------------------------------------------
+		http://localhost:8080/sendemail
+		Method type : POST
+		Content type : JSON
+		Body =>
+	
+		{
+		    "receiverMail":"rj532903@gmail.com",
+		    "subject":"Dummy Subject",
+		    "textMessage":"Hello dear, This message is only for Demo Purposes."
+		}
+*/
 	
 	@PostMapping("/sendemail")
 	public ResponseEntity<?> sendEmail(@RequestBody EmailRequest emailRequest) 		
