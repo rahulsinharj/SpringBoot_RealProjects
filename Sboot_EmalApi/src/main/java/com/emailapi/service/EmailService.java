@@ -1,5 +1,6 @@
 package com.emailapi.service;
 
+import java.util.Date;
 import java.util.Properties;
 
 import javax.mail.Authenticator;
@@ -75,7 +76,7 @@ public class EmailService {
 		//======={STEP3 - Send the Message using Transport class}===========================		
 			
 		Transport.send(mimeMessage);
-			System.out.println("Email send Successfully.......!");
+			System.out.println("Email send Successfully - at "+new Date());
 			sendStatus = true;
 		} 
 		catch (MessagingException e) {

@@ -3,6 +3,7 @@ package com.emailapi.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,7 @@ import com.emailapi.model.EmailRequest;
 import com.emailapi.service.EmailService;
 
 @RestController
+@CrossOrigin
 public class EmailController {
 
 	@Autowired
@@ -26,7 +28,7 @@ public class EmailController {
 
 	Anyone can consume this API for sending email :
    -------------------------------------------------
-		http://localhost:8080/sendemail
+		http://localhost:9091/sendemail
 		Method type : POST
 		Content type : JSON
 		Body =>
