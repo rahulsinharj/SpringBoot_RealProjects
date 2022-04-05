@@ -12,10 +12,15 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
 public class EmailService {
+	
+	@Value("${myem.pass}")			// Fetching from Application.properties file
+	private String pass;
+	
 	
 	// Include this Dependency : https://mvnrepository.com/artifact/com.sun.mail/javax.mail
 	
@@ -24,6 +29,8 @@ public class EmailService {
 	    
 	public boolean sendTextEmail(String receiverMail, String subject, String textMessage) 
 	{
+		System.out.println("Pass : " +pass);
+		
 		boolean sendStatus = false;
 		
 		final String senderMail = "rahulsinhainfo1@gmail.com";
@@ -48,7 +55,7 @@ public class EmailService {
 			@Override
 			protected PasswordAuthentication getPasswordAuthentication() {
 				
-				return new PasswordAuthentication(senderMail, "Info@1234");
+				return new PasswordAuthentication(senderMail, pass);
 			}
 				
 		});  

@@ -14,7 +14,7 @@ import com.emailapi.model.EmailResponse;
 import com.emailapi.service.EmailService;
 
 @RestController
-@CrossOrigin
+@CrossOrigin						// Cross-Origin Resource Sharing (CORS) is a security concept that allows restricting the resources implemented in web browsers. It prevents the JavaScript code producing or consuming the requests against different origin.  
 public class EmailController {
 
 	@Autowired
@@ -60,7 +60,7 @@ public class EmailController {
 				//return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Email not sent, carefully write details again !");
 				//return new ResponseEntity(HttpStatus.NOT_FOUND);
 				
-				EmailResponse emailResponse = new EmailResponse("Email not sent, carefully write details again");
+				EmailResponse emailResponse = new EmailResponse("Email not sent, carefully write email credentials again");
 				return new ResponseEntity<>(emailResponse, HttpStatus.BAD_REQUEST);
 			}
 		}
