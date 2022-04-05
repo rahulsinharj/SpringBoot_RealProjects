@@ -4,12 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.emailapi.model.EmailRequest;
+import com.emailapi.model.EmailResponse;
 import com.emailapi.service.EmailService;
 
 @RestController
@@ -18,11 +19,6 @@ public class EmailController {
 
 	@Autowired
 	private EmailService emailService;
-
-	@RequestMapping("/welcome")
-	public String welcome() {
-		return "hello this is my email api";
-	}
 
 /*===========[ JSon ke format me bheja hua data iss @RequestBody ke karan emailRequest me aajayega ]===========	
 
@@ -40,6 +36,10 @@ public class EmailController {
 		}
 */
 	
+/*	@PostMapping(value = "/sendemail", 
+			  	consumes = MediaType.APPLICATION_JSON_VALUE, 
+			  	produces = MediaType.APPLICATION_JSON_VALUE )		// import org.springframework.http.MediaType
+*/	
 	@PostMapping("/sendemail")
 	public ResponseEntity<?> sendEmail(@RequestBody EmailRequest emailRequest) 		
 	{
@@ -48,16 +48,31 @@ public class EmailController {
 		try {
 			boolean emailResponseStatus = this.emailService.sendTextEmail(emailRequest.getReceiverMail(), emailRequest.getSubject() , emailRequest.getTextMessage());
 			if(emailResponseStatus) {
-				return ResponseEntity.status(HttpStatus.CREATED).body("Email sent Successfully to "+emailRequest.getReceiverMail());
+			 // return ResponseEntity.status(HttpStatus.CREATED).body("Email sent Successfully to "+emailRequest.getReceiverMail());		// This will be just a normal String TEXT - in RESPONSE. 
+				
+			 /* EmailResponse emailResponse = new EmailResponse("Email sent Successfully");
+				return new ResponseEntity<>(emailResponse, HttpStatus.OK);
+			 */
+ 			 // return new ResponseEntity<>(new EmailResponse("Email sent Successfully !"), HttpStatus.OK);
+				return new ResponseEntity<>(new EmailResponse("Email sent Successfully to "+emailRequest.getReceiverMail()), HttpStatus.CREATED);	// This will be just a JSON Formatted Obj - in RESPONSE. 
 			}
 			else {
-				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Email not sent, carefully write details again !");
+				//return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Email not sent, carefully write details again !");
+				//return new ResponseEntity(HttpStatus.NOT_FOUND);
+				
+				EmailResponse emailResponse = new EmailResponse("Email not sent, carefully write details again");
+				return new ResponseEntity<>(emailResponse, HttpStatus.BAD_REQUEST);
 			}
 		}
 		catch (Exception e) 
 		{
 			e.printStackTrace();
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error in sending mail !");
+			//return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error in sending mail !");
+			//return new ResponseEntity(HttpStatus.NOT_FOUND);
+			
+			EmailResponse emailResponse = new EmailResponse("Error in sending mail");
+			return new ResponseEntity<>(emailResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+			
 		}
 	
 	}
@@ -96,5 +111,12 @@ public class EmailController {
 	}
 */
 	
+	@GetMapping("/home")
+	public ResponseEntity<EmailResponse> tokenTest()
+	{
+		EmailResponse res = new EmailResponse("Hi Rahul");
+		return new ResponseEntity<>(res, HttpStatus.OK);
+		
+	}
 	
 }
