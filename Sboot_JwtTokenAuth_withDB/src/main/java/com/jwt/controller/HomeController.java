@@ -1,9 +1,13 @@
 package com.jwt.controller;
 
+import java.security.Principal;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class HomeController {
 
 	@RequestMapping("/welcome")
@@ -14,11 +18,12 @@ public class HomeController {
 		return text;
  	}
 	
-	@RequestMapping("/hello")
-	public String hello()
+	@RequestMapping("/getUser")
+	public String getUser(Principal principal)
 	{
-		String text = "Hello Authenticated user ! ";
-		return text;
+		String name =  principal.getName();
+	//	return "{\"name\":\"Rahul\"}";
+		return "{\"name\":\""+name+"\"}";
  	}
 	
 	
