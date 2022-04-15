@@ -23,8 +23,8 @@ public class MySchedularService {
 //		logger.info("Job2 Run Time : " + new Date());
 //	}
 
-	@Scheduled(fixedRate = 10000 , initialDelayString = "#{@getIntervalTime}")		// we can change the fixedRate = 86400000L miliseconds (i.e, one day interval)    
-	public void job3() {
+	@Scheduled(fixedRate = 86400000L , initialDelayString = "#{@getIntervalTime}")		// we have set the fixedRate = 86400000L miliseconds (i.e, one day interval)    
+	public void job3() {															// We can change = 10000 (=> 10sec)
 		logger.info("**Job2 Run Time : " + new Date());
 	}
 	
