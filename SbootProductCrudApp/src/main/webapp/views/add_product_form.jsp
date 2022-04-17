@@ -13,7 +13,7 @@
 
 	<div class="row">
 
-		<div class="col-md-6 offset-md-3">
+		<div class="col-md-10 mx-auto">
 
 			<h1 class="text-center mb-3">Fill the product detail</h1>
 

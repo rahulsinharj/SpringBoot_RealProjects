@@ -34,7 +34,8 @@ public class ProductService {
 	// Fetching all product entries
 	public List<Product> getAllProducts() {
 		List<Product> products = new ArrayList<Product>();
-		for(Product prod : this.productRepository.findAll()) {
+		for(Product prod : this.productRepository.getAllProductsOrderById()) 	 // productRepository.findAll()   // productRepository.getAllProductsOrderById()
+		{
 			products.add(prod);
 		}
 		return products;
