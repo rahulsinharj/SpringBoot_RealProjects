@@ -39,20 +39,20 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 		System.out.println("Inside Jwt-Authentication-FILTER");
 		
 		// Get Jwt
-		// And it is starting with Bearer
+		// And it is starting with Bearer ?
 		// Then Validate
-		
-		String authorizationHeader = request.getHeader("Authorization");
+																			// We'll check whether any "Authorization" KEY is coming through HEADER. From that we'll be receiving JWT TOKEN String.
+		String authorizationHeader = request.getHeader("Authorization");	// check karega ki HEADER me "Authorization" naam ka koi KEY hai aaraha hai kya ? Agar hoga to usme rakha value receive ho jayega. 
 		String username = null;
 		String jwtToken = null;
 		
 		// Null And Format check ::
-		if(authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) 
+		if(authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) 		// Once we receive we AuthorizationHeader
 		{
-			jwtToken = authorizationHeader.substring(7);
+			jwtToken = authorizationHeader.substring(7);					// We'll remove the Bearer part and cutdown the actual token key 
 			
 			try {
-				username = this.jwtUtility.getUsernameFromToken(jwtToken);		// retrieve username from jwt token
+				username = this.jwtUtility.getUsernameFromToken(jwtToken);		// jwtUtility class will validate the "PayLoad Data" having-in that token, by checking its "claims" from the jwt "SignatureData" as per the assigned "Secret Key". If claims are validated, then it will return the validated username coming from that token. 
 				System.out.println("Token Username : "+username);
 			} 
 			catch (IllegalArgumentException e) {
@@ -72,14 +72,15 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 			System.out.println("JWT Token does not begin with Bearer String");
 		}
 		
-		// Once we get the token, validate it.
+		// Once we get the token, validate it from database user.
 		if(username!=null && SecurityContextHolder.getContext().getAuthentication()==null)
         {
-			UserDetails userDetails = this.customUserDetailsService.loadUserByUsername(username);	// Validating the USERNAME by retrieving the USER DETAILS (either from Database)
+			UserDetails userDetails = this.customUserDetailsService.loadUserByUsername(username);	// Validating the USERNAME by loading/retrieving the USER DETAILS (either from Database)
 
 			// If token is valid, configure Spring Security to manually set authentication.
 			if (jwtUtility.validateToken(jwtToken, userDetails)) 
 			{
+				// Create an Authentication for the validated user 
 				UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
 
 	            usernamePasswordAuthenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
@@ -93,7 +94,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 			System.out.println("Token is not validated..");
         }
 		
-		filterChain.doFilter(request, response);
+		filterChain.doFilter(request, response);		// Then we'll do the filter chain, and forward our request.
 	}
 
 	
