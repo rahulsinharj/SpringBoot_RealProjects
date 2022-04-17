@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -88,4 +89,21 @@ public class NoteController {
 		
 		return "redirect:/view-notes";
 	}
+	
+	@GetMapping("/search")
+	public String searchNote(@RequestParam("query") String query, Model model)
+	{
+		System.out.println("QUERY : "+query);
+		
+		List<Note> allNotes = this.noteRepo.getNotesContainingKeyword(query);
+		System.out.println("Query Containing Notes : "+allNotes);
+		
+		model.addAttribute("allNotes", allNotes);
+		
+		return "search_notes";
+	}
+	
+	
+	
+	
 }
