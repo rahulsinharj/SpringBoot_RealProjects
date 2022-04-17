@@ -27,14 +27,14 @@ public class NoteController {
 		return "home";
 	}
 	
-	@GetMapping("/add-notes")
+	@GetMapping("/add-note")
 	public String addNotes()
 	{
 		System.out.println("Inside /add-notes controller");
-		return "add_notes";
+		return "add_note";
 	}
 	
-	@PostMapping("/save-notes")
+	@PostMapping("/save-note")
 	public String saveNotes(@RequestParam("title") String title, @RequestParam("content") String content)
 	{
 		System.out.println("Inside /save-notes controller");
@@ -71,10 +71,10 @@ public class NoteController {
 		Note editNote = this.noteRepo.findById(noteId).get();
 		model.addAttribute("note",editNote);
 		
-		return "edit";
+		return "edit_note";
 	}
 	
-	@PostMapping("/save-updated-notes")
+	@PostMapping("/save-updated-note")
   //public String saveUpdatedNotes(@RequestParam("noteId") int noteId, @RequestParam("title") String title, @RequestParam("content") String content)
 	public String saveUpdatedNotes(@ModelAttribute("note") Note note)
 	{

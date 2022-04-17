@@ -15,7 +15,7 @@
 		
 		<br><h2 class="text-center">Edit your note</h2><br>
 
-		<form action="/save-updated-notes" method="post">
+		<form action="/save-updated-note" method="post">
 
 			<input value="${note.id}" name="id" type="hidden" />
 

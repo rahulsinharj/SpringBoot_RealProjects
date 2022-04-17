@@ -15,7 +15,7 @@
 		<br><h2 class="text-center">Please fill your note detail : </h2><br>
 		<!-- this is add form  -->
 
-		<form action="/save-notes" method="post">
+		<form action="/save-note" method="post">
 
 			<div class="form-group">
 				<label for="title">Note Title</label> <input name="title" required

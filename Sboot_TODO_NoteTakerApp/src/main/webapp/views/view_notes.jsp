@@ -33,7 +33,7 @@
 							<div class="d-flex offset-sm-5">
 
 								<form method="post" action="/edit-note?note_id=${note.id}" >
-									<button type="submit" class="btn btn-info"
+									<button type="submit" class="btn btn-info ml-4"
 										title="Update this Contact !">Edit</button>
 								</form>
 								
@@ -44,7 +44,7 @@
 
 							</div>
 
- 	<!-- // Below code is only for GETMAPPING in NoteController for edit/delete 
+ 	<!-- // Below code is only for @GETMAPPING in NoteController for edit/delete 
 							<div class="container text-center mt-2">
 								<a href="/edit-note?note_id=${note.id}" class="btn btn-primary">Edit</a>
 								<a href="/delete-note?note_id=${note.id}" class="btn btn-warning">Delete</a>
