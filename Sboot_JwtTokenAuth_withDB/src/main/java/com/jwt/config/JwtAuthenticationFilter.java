@@ -41,7 +41,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 		// Get Jwt
 		// And it is starting with Bearer ?
 		// Then Validate
-																			// We'll check whether any "Authorization" KEY is coming through HEADER. From that we'll be receiving JWT TOKEN String.
+																			// We'll check whether any "Authorization" information is coming through Request-HEADER. From that we'll be receiving JWT TOKEN String.
 		String authorizationHeader = request.getHeader("Authorization");	// check karega ki HEADER me "Authorization" naam ka koi KEY hai aaraha hai kya ? Agar hoga to usme rakha value receive ho jayega. 
 		String username = null;
 		String jwtToken = null;
@@ -85,7 +85,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
 	            usernamePasswordAuthenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 
-	            // After setting the Authentication in the context, we specify that the current user is authenticated. So it passes the Spring Security Configurations successfully.  
+	            // Now, we'll SET the User-Authentication in the "SecurityContext", with-that we are specifying that the current user is now authenticated. So that it passes the Spring Security Configurations successfully.  
 	            SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
 			}
         }
