@@ -18,10 +18,6 @@ public class MySchedularService {
 		logger.info("Job1 Run Time : " + new Date());
 	}
 	
-//	@Scheduled(fixedRateString = "${schedular2.fixedRateInMS}", initialDelay = 5000L)
-//	public void job2() {
-//		logger.info("Job2 Run Time : " + new Date());
-//	}
 
 	@Scheduled(fixedRate = 86400000L , initialDelayString = "#{@getIntervalTime}")		// we have set the fixedRate = 86400000L miliseconds (i.e, one day interval)    
 	public void job3() {															// We can change = 10000 (=> 10sec)
