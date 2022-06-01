@@ -15,12 +15,12 @@ public class HomeController {
 	private EmployeeService employeeService;
 	
 	// Returning Array of Employee ::
-//	@GetMapping("/emp")
-//	public ResponseEntity<Employee[]> consumeExternalApi()							
-//	{
-//		return new ResponseEntity<>(employeeService.consumeApi(), HttpStatus.OK);
-//	}
-
+/*	@GetMapping("/emp")
+	public ResponseEntity<Employee[]> consumeExternalApi()							
+	{
+		return new ResponseEntity<>(employeeService.consumeApi(), HttpStatus.OK);
+	}
+*/
 	
 	// Returning LIST of Employee ::
 	@GetMapping("/emp")												

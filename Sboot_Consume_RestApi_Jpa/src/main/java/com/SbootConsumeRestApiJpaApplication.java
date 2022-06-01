@@ -13,8 +13,10 @@ public class SbootConsumeRestApiJpaApplication {
 		
 	}
 	
+	// Creating RestTemplate bean in config class ::
+	
 	@Bean
-	public RestTemplate getresRestTemplate() {
+	public RestTemplate getRestTemplate() {
 		return new RestTemplate();
 	}
 	

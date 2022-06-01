@@ -22,11 +22,12 @@ public class EmployeeService {
 	
 	private final String URL = "https://gorest.co.in/public/v2/users";
 	
-//	public Employee[] consumeApi()
-//	{
-//		Employee[] emps = this.restTemplate.getForObject(URL, Employee[].class);
-//		return emps;
-//	}
+/*	public Employee[] consumeApi()
+	{
+		Employee[] emps = this.restTemplate.getForObject(URL, Employee[].class);
+		return emps;
+	}
+*/
 	
 	public List<Employee> consumeApi()
 	{
