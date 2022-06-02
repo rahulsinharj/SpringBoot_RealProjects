@@ -84,7 +84,7 @@ public class EmailService {
 		//======={STEP3 - Send the Message using Transport class}===========================		
 			
 		Transport.send(mimeMessage);
-			System.out.println("Email send Successfully - at "+new Date());
+			System.out.println("####-----Email send Successfully to "+receiverMail+" - at "+new Date());
 			sendStatus = true;
 		} 
 		catch (MessagingException e) {
