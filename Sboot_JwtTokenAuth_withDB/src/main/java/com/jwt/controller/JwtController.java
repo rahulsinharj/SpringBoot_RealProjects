@@ -51,7 +51,7 @@ public class JwtController {
 			e.printStackTrace();
 		}
 		
-		// Once the user credentials Authentication is successful, Now we'll be creating the JWT TOKEN  ::
+		// Once the user credentials Authentication is successful, Now we'll be creating the JWT TOKEN using JwtUtility class  ::
 		UserDetails userDetails = this.customUserDetailsService.loadUserByUsername(jwtRequest.getUsername());
 		String token = this.jwtUtility.generateToken(userDetails);
 			System.out.println("Token : "+token);
