@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ControllerAdvice
 public class MyExceptionHandler {
 
-/* Handling Exception for the whole Application - by using @ControllerAdvice annotation above the Class name  :
+/* Handling Exception for the whole Application - by using @ControllerAdvice annotation above the Class name :
  -------------------------------------------------------------------------------------------*/
 	
 	@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
