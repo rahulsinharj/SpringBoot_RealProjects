@@ -19,16 +19,39 @@ public class StudentService {
 		return this.studentRepository.save(student);
 	}
 
-	public Student showSingleStudent(int studentId) 
-	{
-		return this.studentRepository.findById(studentId)
-				.orElseThrow(() -> new RuntimeException("Student you are looking for not found on server !"));
-	}
-
 	public List<Student> showAllStudents() 
 	{
 		return this.studentRepository.findAll();
 	}
+	
+	public Student showSingleStudentById(int studentId) 
+	{
+		return this.studentRepository.findById(studentId)
+				.orElseThrow(() -> new RuntimeException("Student you are looking for not found on server !"));
+	}
+	
+	public List<Student> showStudentByNameAndCity(String name, String city) 
+	{
+		List<Student> stu = this.studentRepository.findByNameAndCity(name, city);
+		stu.forEach(System.out::println);
+		return stu;
+	}
+	
+	public List<Student> showStudentByCity(String city) 
+	{
+	
+		List<Student> stu = this.studentRepository.findByCity(city);
+		stu.forEach(System.out::println);
+		return stu;
+	}
+	
+	public List<Student> showStudentByNameContaining(String nameKeyword) 
+	{
+		List<Student> stu = this.studentRepository.findByNameContaining(nameKeyword);
+		stu.forEach(System.out::println);
+		return stu;
+	}	
+	
 
 	public Student updateStudent(Student student) 
 	{
@@ -40,5 +63,9 @@ public class StudentService {
 	{
 		this.studentRepository.deleteById(studentId);
 	}
+
+	
+
+	
 
 }
