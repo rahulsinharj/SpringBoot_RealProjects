@@ -38,7 +38,7 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override	// Kaun se URL ko secured rakhna hai, hamaraa filter kya hoga, and also disabling CSRF
 	protected void configure(HttpSecurity http) throws Exception 
 	{
-		http.csrf().disable()
+		http.csrf().disable()						// "Cross Site Request Forgery" disabled
 			.cors().disable()
 			.authorizeRequests()					// Requests ko authtorize karni hai
 			.antMatchers("/auth").permitAll()
