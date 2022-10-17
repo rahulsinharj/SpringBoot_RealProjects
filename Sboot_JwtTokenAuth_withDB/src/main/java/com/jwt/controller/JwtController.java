@@ -31,7 +31,7 @@ public class JwtController {
 	private AuthenticationManager authenticationManager;
 	
 	@PostMapping("/auth")
-	public ResponseEntity<?> generateAuthenticationToken(@RequestBody JwtRequest jwtRequest) throws Exception		//  @RequestBody - will deserialize the incoming JSON request data by converting it into a User-Entity-Object. 
+	public ResponseEntity<JwtResponse> generateAuthenticationToken(@RequestBody JwtRequest jwtRequest) throws Exception		//  @RequestBody - will deserialize the incoming JSON request data by converting it into a User-Entity-Object. 
 	{
 		System.out.println("JwtRequest : " +jwtRequest);
 		
