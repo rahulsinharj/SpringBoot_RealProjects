@@ -24,36 +24,36 @@ public class StudentController {
 	@Autowired
 	private StudentService studentService;
 	
-	// Create Student ::
+	// Create Student ::									localhost:8080/student
 	@PostMapping("")				
 	public Student addStudent(@RequestBody Student student) {
 		return this.studentService.addStudent(student);
 	}
 
 	
-	// Get All Students ::
+	// Get All Students ::									localhost:8080/student
 	@GetMapping("")				// agar yaha path me (path = "/") slash laga denge to (localhost:8080/student) ke jagah (localhost:8080/student/ ) aisa search karna padega everytime, then it will only work with including slash /  
 	public List<Student> showAllStudents() {
 		return this.studentService.showAllStudents();
 	}
 	
 	
-	// Get Single Student by ID ::
+	// Get Single Student by ID ::							localhost:8080/student/6
 	@GetMapping("/{studentId}")
 	public Student showSingleStudentById(@PathVariable("studentId") int studentId) {
 		return this.studentService.showSingleStudentById(studentId);
 	}
 	
 	
-	// Get Students by student's name & city ::
+	// Get Students by student's name & city ::				localhost:8080/student?name=rahul&city=delhi
 	@GetMapping(path = "", params = {"name", "city"})		
-	public List<Student> showStudentByNameAndListCity(@RequestParam("name") String name, @RequestParam("city") String city)
+	public List<Student> showStudentByNameAndCity(@RequestParam("name") String name, @RequestParam("city") String city)
 	{
 		return this.studentService.showStudentByNameAndCity(name, city);
 	}
 	
 	
-	// Get Students by student's city ::
+	// Get Students by student's city ::					localhost:8080/student?city=delhi
 	@GetMapping(path = "", params = {"city"})
 	public List<Student> showStudentByCity(@RequestParam("city") String city)
 	{

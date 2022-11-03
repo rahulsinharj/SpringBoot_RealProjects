@@ -39,12 +39,12 @@ public class StudentService {
 	
 	public List<Student> showStudentByCity(String city) 
 	{
-	
 		List<Student> stu = this.studentRepository.findByCity(city);
 		stu.forEach(System.out::println);
 		return stu;
 	}
 	
+	// Search by : Keyword Containing
 	public List<Student> showStudentByNameContaining(String nameKeyword) 
 	{
 		List<Student> stu = this.studentRepository.findByNameContaining(nameKeyword);
