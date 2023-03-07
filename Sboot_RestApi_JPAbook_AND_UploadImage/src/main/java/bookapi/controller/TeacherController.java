@@ -36,7 +36,13 @@ public class TeacherController {
 		String jsonString = "";
 		try {
 			ObjectMapper objectMapper = new ObjectMapper();
-			jsonString = objectMapper.writeValueAsString(teacher1);
+			
+			jsonString = objectMapper.writeValueAsString(teacher1);				// new ObjectMapper().writeValueAsString(); is used to convert/serialize a Object into JSON String.					
+			System.out.println(jsonString);
+			
+			Teacher readValue = objectMapper.readValue(jsonString, Teacher.class);	// new ObjectMapper().readValue();	 is used to convert/deserialize a JSON String into Object form.	
+			System.out.println(readValue);
+			
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
