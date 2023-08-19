@@ -43,8 +43,8 @@ public class SbootDemoAppApplication implements CommandLineRunner {
 		this.studentService.addStudent(s1);
 		this.studentService.addStudent(s2);
 		this.studentService.addStudent(s3);
-		
 */		
+		
 	}
 
 	public static void main(String[] args) {
