@@ -32,7 +32,7 @@ public class StudentController {
 
 	
 	// Get All Students ::									localhost:8080/student
-	@GetMapping("")				// agar yaha path me (path = "/") slash laga denge to (localhost:8080/student) ke jagah (localhost:8080/student/ ) aisa search karna padega everytime, then it will only work with including slash /  
+	@GetMapping("")										// agar yaha path me (path = "/") slash laga denge to (localhost:8080/student) ke jagah (localhost:8080/student/ ) aisa search karna padega everytime, then it will only work with including slash /  
 	public List<Student> showAllStudents() {
 		return this.studentService.showAllStudents();
 	}
