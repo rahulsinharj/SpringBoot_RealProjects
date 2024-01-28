@@ -32,7 +32,12 @@ public class Movie implements Serializable {
     private List<Review> reviews;
 
     public MovieResponse toMovieResponse() {
-        return MovieResponse.builder().genre(this.genre).title(this.title).rating(this.rating).reviews(Review.toReviewResponse(this.reviews)).build();
+        return MovieResponse.builder()
+                .genre(this.genre)
+                .title(this.title)
+                .rating(this.rating)
+                .reviews(Review.toReviewResponse(this.reviews))
+                .build();
     }
 
 

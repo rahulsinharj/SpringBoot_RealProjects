@@ -45,7 +45,10 @@ public class Review {
     private Date updatedDate;
 
     public static ReviewResponse toReviewResponse(Review review) {
-        return ReviewResponse.builder().review(review.movieReview).rating(review.rating).build();
+        return ReviewResponse.builder()
+                .review(review.movieReview)
+                .rating(review.rating)
+                .build();
     }
 
     public static List<ReviewResponse> toReviewResponse(List<Review> reviewList) {
