@@ -3,9 +3,9 @@ package com.movieshoutreview.service;
 
 import com.movieshoutreview.model.bo.Movie;
 import com.movieshoutreview.model.bo.Review;
+import com.movieshoutreview.model.dto.response.ReviewResponse;
 import com.movieshoutreview.repository.MovieRepository;
 import com.movieshoutreview.repository.ReviewRepository;
-import com.movieshoutreview.model.dto.response.ReviewResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,8 +32,7 @@ public class ReviewService {
             Double average = reviewRepository.getReviewAverage(movie.getId());
             movie.setRating(average);
             movieRepository.save(movie);
-        }
-        else throw new NoSuchElementException();
+        } else throw new NoSuchElementException();
     }
 
     public ReviewResponse getReviewById(Long reviewId) {

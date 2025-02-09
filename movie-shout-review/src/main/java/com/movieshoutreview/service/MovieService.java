@@ -34,12 +34,13 @@ public class MovieService {
             return new ArrayList<>();
 
         List<Movie> movieList = movieRepository.findByGenre(Genre.valueOf(genre));
+
         if (!CollectionUtils.isEmpty(movieList)) {
             List<MovieResponse> movieResponseList = movieList.stream()
                     .sorted(Comparator.comparing(Movie::getRating, Comparator.reverseOrder()))
                     .map(Movie::toMovieResponse)
                     .collect(Collectors.toList());
-                                                                //OR//    .map(m -> m.toMovieResponse())
+            //OR//    .map(m -> m.toMovieResponse())
             if (movieResponseList.size() > 5)
                 return movieResponseList.subList(0, 4);
 
